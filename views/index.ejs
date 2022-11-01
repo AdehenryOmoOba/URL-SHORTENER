@@ -1,0 +1,48 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <link rel="stylesheet" href="style.css" type="text/css" />
+    <title>Adehenry - URL Shortener</title>
+</head>
+<body>
+    <main>
+        <h1>URL Shortener</h1>
+        <form action="/shorturl" method="post">
+            <label for="full-url" aria-hidden="false">URL</label>
+            <input type="url" name="fullurl" id="full-url" placeholder="Full URL" required>
+            <button type="submit">Shrink URL</button>
+        </form>
+        <div class="table">
+            <div class="table-head">
+                <div class="full-url">
+                    <h4>Full URL</h4>
+                </div>
+                <div class="short-url">
+                    <h4>Short URL</h4>
+                </div>
+                <div class="clicks">
+                    <h4>Clicks</h4>
+                </div>
+            </div>
+            <div class="table-body">
+                <% allURLs.forEach((shortUrl) => { %> 
+                    <div class="item" onclick="() => console.log('table')">
+                        <div>
+                            <a href="<%= shortUrl.fullURL %>" target="_blank" class="truncate"><%= shortUrl.fullURL %></a>
+                        </div>
+                        <div>
+                            <a href="<%= shortUrl.shortURL %>" target="_blank"><%= shortUrl.shortURL %></a>
+                        </div>
+                        <div>
+                            <p><%= shortUrl.clicks %></p>
+                        </div>
+                    </div>
+            <%  }) %> 
+            </div>
+        </div>
+    </main>
+</body>
+</html>
